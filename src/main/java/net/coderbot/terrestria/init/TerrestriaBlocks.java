@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
@@ -78,6 +79,8 @@ public class TerrestriaBlocks {
 	public static PlantBlock MONSTERAS;
 	public static FlowerPotBlock POTTED_INDIAN_PAINTBRUSH;
 	public static FlowerPotBlock POTTED_MONSTERAS;
+	
+	public static FallingBlock TROPICAL_SAND;
 
 	public static void init() {
 		FlammableBlockRegistry flammable = FlammableBlockRegistry.getDefaultInstance();
@@ -209,6 +212,8 @@ public class TerrestriaBlocks {
 		POTTED_RAINBOW_EUCALYPTUS_SAPLING = register("potted_rainbow_eucalyptus_sapling", new FlowerPotBlock(RAINBOW_EUCALYPTUS_SAPLING, Block.Settings.copy(Blocks.POTTED_POPPY)));
 		POTTED_SAKURA_SAPLING = register("potted_sakura_sapling", new FlowerPotBlock(SAKURA_SAPLING, Block.Settings.copy(Blocks.POTTED_POPPY)));
 		POTTED_PALM_SAPLING = register("potted_palm_sapling", new FlowerPotBlock(PALM_SAPLING, Block.Settings.copy(Blocks.POTTED_POPPY)));
+		
+		TROPICAL_SAND = register("tropical_sand", new FallingBlock(FabricBlockSettings.of(Material.SAND, MaterialColor.WHITE).sounds(BlockSoundGroup.SAND).hardness(0.1F).resistance(0.1F).build()));
 		// TODO: Stripped Logs, Stripped Wood
 	}
 

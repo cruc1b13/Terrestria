@@ -139,12 +139,14 @@
   "block.terrestria.sakura_sign": "Sakura Sign",
   "block.terrestria.stripped_sakura_wood": "Stripped Sakura Wood",
   "block.terrestria.stripped_sakura_log": "Stripped Sakura Log",
-
+  
   "block.terrestria.palm_sapling": "Palm Sapling",
-
+  
   "block.terrestria.cattail": "Cattail",
   "block.terrestria.tall_cattail": "Tall Cattail",
-
+  
+  "block.terrestria.tropical_sand": "Tropical Sand",
+    
   "block.terrestria.basalt": "Basalt",
   "block.terrestria.basalt_grass_block": "Basalt Grass Block",
   "block.terrestria.basalt_sand": "Basalt Sand",
@@ -179,7 +181,12 @@
   "item.terrestria.log_turner.tooltip.line5": "rotate the bark side clockwise",
   "item.terrestria.log_turner.tooltip.line6": "When used while sneaking, it will",
   "item.terrestria.log_turner.tooltip.line7": "cycle the axis and bark side",
-
+  
+  "biome.terrestria.tropical_island": "Tropical Island",
+  "biome.terrestria.tropical_island_coast": "Tropical Island Coast",
+  "biome.terrestria.tropical_reef": "Tropical Reef",
+  "biome.terrestria.tropical_reef_edge": "Tropical Reef Edge",
+  
   "biome.terrestria.redwood_forest": "Redwood Forest",
   "biome.terrestria.redwood_forest_edge": "Redwood Forest Edge",
   "biome.terrestria.redwood_clearing": "Redwood Clearing",

@@ -132,11 +132,12 @@ public class TerrestriaBiome extends Biome {
 		private float downfall;
 		private int waterColor;
 		private int waterFogColor;
+		private String parent = null;
 		private ArrayList<Biome.SpawnEntry> spawnEntries = new ArrayList<>();
 
 		public Biome build() {
 			// Create the biome settings from the builder options
-			biomeSettings = new Biome.Settings().parent(null).category(category).depth(depth).scale(scale)
+			biomeSettings = new Biome.Settings().parent(parent).category(category).depth(depth).scale(scale)
 					.precipitation(precipitation).temperature(temperature).downfall(downfall).waterColor(waterColor)
 					.waterFogColor(waterFogColor)
 					.configureSurfaceBuilder(this.surfaceBuilder.surfaceBuilder, this.surfaceBuilder.config); // more
@@ -252,7 +253,7 @@ public class TerrestriaBiome extends Biome {
 			this.plantFeatures.put(blockState, count);
 			return this;
 		}
-
+		
 		public TerrestriaBiome.Builder addDoubleGrassFeature(BlockState blockState, int count) {
 			this.doublePlantFeatures.put(blockState, count);
 			return this;
@@ -307,7 +308,12 @@ public class TerrestriaBiome extends Biome {
 			this.spawnEntries.add(entry);
 			return this;
 		}
-
+		
+		public TerrestriaBiome.Builder setParent(String biome) {
+			this.parent = biome;
+			return this;
+		}
+		
 		public TerrestriaBiome.Builder addStructureFeature(StructureFeature feature) {
 			this.addStructureFeature(feature, FeatureConfig.DEFAULT);
 			return this;

@@ -6,7 +6,6 @@ import io.github.terraformersmc.terraform.feature.FallenLogFeature;
 import net.coderbot.terrestria.Terrestria;
 import net.coderbot.terrestria.feature.TreeDefinition;
 import net.coderbot.terrestria.feature.trees.*;
-import net.coderbot.terrestria.feature.trees.RedwoodTreeFeatureMega;
 import net.coderbot.terrestria.feature.volcano.VolcanoGenerator;
 import net.coderbot.terrestria.feature.volcano.VolcanoStructureFeature;
 import net.minecraft.block.Blocks;
@@ -40,6 +39,8 @@ public class TerrestriaFeatures {
 	public static JungleTreeFeature SMALL_RAINBOW_EUCALYPTUS_TREE;
 	public static PalmTreeFeature PALM_TREE;
 	public static RubberTreeFeature RUBBER_TREE;
+	public static TropicalIslandPalmTreeFeature TROPICAL_ISLAND_PALM;
+	public static TropicalIslandPalmTreeFeature2 TROPICAL_ISLAND_PALM_2;
 
 	public static CattailFeature CATTAIL;
 	public static FallenLogFeature FALLEN_REDWOOD_LOG;
@@ -168,11 +169,19 @@ public class TerrestriaFeatures {
 		FALLEN_HEMLOCK_LOG = register("fallen_hemlock_log",
 				new FallenLogFeature(DefaultFeatureConfig::deserialize, false, TerrestriaBlocks.HEMLOCK.log.getDefaultState())
 		);
-
+		
+		TROPICAL_ISLAND_PALM = register("tropical_island_palm_tree",
+				new TropicalIslandPalmTreeFeature()
+		);
+		
+		TROPICAL_ISLAND_PALM_2 = register("tropical_island_palm_tree_grassonly",
+				new TropicalIslandPalmTreeFeature2()
+		);
+		
 		VOLCANO_STRUCTURE = Registry.register(Registry.STRUCTURE_FEATURE, new Identifier(Terrestria.MOD_ID, "volcano"),
 				new VolcanoStructureFeature(DefaultFeatureConfig::deserialize)
 		);
-
+		
 		Feature.STRUCTURES.put("Volcano", VOLCANO_STRUCTURE);
 
 		VOLCANO_PIECE = Registry.register(Registry.STRUCTURE_PIECE, new Identifier(Terrestria.MOD_ID, "volcano"), VolcanoGenerator::new);

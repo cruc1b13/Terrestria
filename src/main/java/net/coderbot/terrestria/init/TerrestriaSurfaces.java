@@ -5,6 +5,7 @@ import io.github.terraformersmc.terraform.surface.CliffSurfaceBuilder;
 import io.github.terraformersmc.terraform.surface.CliffSurfaceConfig;
 import io.github.terraformersmc.terraform.surface.FloodingBeachSurfaceBuilder;
 import net.coderbot.terrestria.Terrestria;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -21,6 +22,8 @@ public class TerrestriaSurfaces {
 	public static CliffSurfaceBuilder CLIFF;
 	public static CliffSurfaceConfig BASALT_CONFIG;
 	public static TernarySurfaceConfig ALPS_CONFIG;
+	public static BeachSurfaceBuilder TROPICAL_BEACH;
+	public static TernarySurfaceConfig TROPICAL_CONFIG;
 
 	public static void init() {
 		CALDERA = register("caldera", new FloodingBeachSurfaceBuilder(TernarySurfaceConfig::deserialize, 100, v -> Blocks.SAND.getDefaultState()));
@@ -32,7 +35,13 @@ public class TerrestriaSurfaces {
 		));
 
 		BEACH = register("beach", new BeachSurfaceBuilder(TernarySurfaceConfig::deserialize, 62, v -> Blocks.SAND.getDefaultState()));
-
+		
+		TROPICAL_BEACH = register("tropical_beach", new BeachSurfaceBuilder(
+				TernarySurfaceConfig::deserialize,
+				62,
+				v -> TerrestriaBlocks.TROPICAL_SAND.getDefaultState()
+		));
+		
 		CLIFF = register("cliff", new CliffSurfaceBuilder(CliffSurfaceConfig::deserialize, 62, BASALT_BEACH));
 
 		BASALT_CONFIG = new CliffSurfaceConfig(
@@ -46,6 +55,12 @@ public class TerrestriaSurfaces {
 				Blocks.SNOW_BLOCK.getDefaultState(),
 				Blocks.SNOW_BLOCK.getDefaultState(),
 				Blocks.STONE.getDefaultState()
+		);
+		
+		TROPICAL_CONFIG = new TernarySurfaceConfig(
+				Blocks.GRASS_BLOCK.getDefaultState(),
+				Blocks.DIRT.getDefaultState(),
+				TerrestriaBlocks.TROPICAL_SAND.getDefaultState()
 		);
 	}
 

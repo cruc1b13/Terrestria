@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
 import net.fabricmc.fabric.api.biomes.v1.OverworldClimate;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -19,7 +20,10 @@ import net.minecraft.world.gen.decorator.DecoratorConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.MineshaftFeature;
 import net.minecraft.world.gen.feature.MineshaftFeatureConfig;
+import net.minecraft.world.gen.feature.OceanRuinFeature;
+import net.minecraft.world.gen.feature.OceanRuinFeatureConfig;
 import net.minecraft.world.gen.feature.SeagrassFeatureConfig;
+import net.minecraft.world.gen.feature.ShipwreckFeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 
 import java.util.function.Consumer;
@@ -59,6 +63,10 @@ public class TerrestriaBiomes {
 	public static Biome VOLCANIC_ISLAND_BEACH;
 	public static Biome VOLCANIC_ISLAND_SHORE;
 	public static Biome ALPS;
+	public static Biome TROPICAL_REEF;
+	public static Biome TROPICAL_REEF_EDGE;
+	public static Biome TROPICAL_ISLAND;
+	public static Biome TROPICAL_ISLAND_COAST;
 
 	public static void init() {
 
@@ -711,7 +719,117 @@ public class TerrestriaBiomes {
 				.addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL))
 				.addDefaultSpawnEntries()
 				.build());
-
+		
+		TROPICAL_REEF = register("tropical_reef", TerrestriaBiome.builder()
+				.configuredSurfaceBuilder(TerrestriaSurfaces.TROPICAL_BEACH, TerrestriaSurfaces.TROPICAL_CONFIG)
+				.precipitation(Biome.Precipitation.RAIN).category(Biome.Category.OCEAN)
+				.depth(-0.5F)
+				.scale(0.01F)
+				.temperature(1.1F)
+				.downfall(0.7F)
+				.waterColor(4445678)
+				.waterFogColor(270131)
+				.addDefaultFeatures(LAND_CARVERS, STRUCTURES, DUNGEONS, MINEABLES, ORES, DISKS,
+						DEFAULT_FLOWERS, DEFAULT_GRASS, DEFAULT_MUSHROOMS, SWAMP_VEGETATION,
+						SPRINGS, FROZEN_TOP_LAYER)
+				.addStructureFeature(Feature.STRONGHOLD)
+				.addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL))
+				.addStructureFeature(Feature.OCEAN_RUIN, new OceanRuinFeatureConfig(OceanRuinFeature.BiomeType.WARM, 0.33F, 0.95F))
+				.addStructureFeature(Feature.SHIPWRECK, new ShipwreckFeatureConfig(false))
+				.addDefaultSpawnEntries()
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.SQUID, 9, 4, 4))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.PUFFERFISH, 18, 1, 3))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.TROPICAL_FISH, 26, 8, 8))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.DOLPHIN, 5, 1, 2))
+				.build());
+		
+		TROPICAL_REEF_EDGE = register("tropical_reef_edge", TerrestriaBiome.builder()
+				.configuredSurfaceBuilder(TerrestriaSurfaces.TROPICAL_BEACH, TerrestriaSurfaces.TROPICAL_CONFIG)
+				.precipitation(Biome.Precipitation.RAIN).category(Biome.Category.OCEAN)
+				.depth(-1.5F)
+				.scale(0.01F)
+				.temperature(1.1F)
+				.downfall(0.7F)
+				.waterColor(4445678)
+				.waterFogColor(270131)
+				.addDefaultFeatures(LAND_CARVERS, STRUCTURES, DUNGEONS, MINEABLES, ORES, DISKS,
+						DEFAULT_FLOWERS, DEFAULT_GRASS, DEFAULT_MUSHROOMS, SWAMP_VEGETATION,
+						SPRINGS, FROZEN_TOP_LAYER)
+				.addStructureFeature(Feature.STRONGHOLD)
+				.addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL))
+				.addStructureFeature(Feature.OCEAN_RUIN, new OceanRuinFeatureConfig(OceanRuinFeature.BiomeType.WARM, 0.33F, 0.95F))
+				.addStructureFeature(Feature.SHIPWRECK, new ShipwreckFeatureConfig(false))
+				.addDefaultSpawnEntries()
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.SQUID, 9, 4, 4))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.PUFFERFISH, 18, 1, 3))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.TROPICAL_FISH, 26, 8, 8))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.DOLPHIN, 5, 1, 2))
+				.build());
+		
+		TROPICAL_ISLAND = register("tropical_island", TerrestriaBiome.builder()
+				.configuredSurfaceBuilder(TerrestriaSurfaces.TROPICAL_BEACH, TerrestriaSurfaces.TROPICAL_CONFIG)
+				.precipitation(Biome.Precipitation.RAIN).category(Biome.Category.FOREST)
+				.depth(0.2F)
+				.scale(0.26F)
+				.temperature(1.1F)
+				.downfall(0.7F)
+				.waterColor(4445678)
+				.waterFogColor(270131)
+				.setParent("blossom:tropical_reef") // I'm not risking changing this
+				.addDefaultFeatures(LAND_CARVERS, STRUCTURES, DUNGEONS, MINEABLES, ORES, DISKS,
+						DEFAULT_FLOWERS, DEFAULT_GRASS, DEFAULT_MUSHROOMS, SWAMP_VEGETATION,
+						SPRINGS, FROZEN_TOP_LAYER)
+				.addTreeFeature(TerrestriaFeatures.TROPICAL_ISLAND_PALM, 1)
+				.addTreeFeature(TerrestriaFeatures.TROPICAL_ISLAND_PALM_2, 1)
+				.addStructureFeature(Feature.STRONGHOLD)
+				.addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.BAT, 10, 8, 8))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.SPIDER, 100, 4, 4))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.SKELETON, 100, 4, 4))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.CREEPER, 100, 4, 4))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.SLIME, 100, 4, 4))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.ENDERMAN, 10, 1, 4))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.WITCH, 5, 1, 1))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.ZOMBIE, 95, 4, 4))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.ZOMBIE_VILLAGER, 1, 1, 1))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.TROPICAL_FISH, 26, 8, 8))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.RABBIT, 1, 2, 3))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.PARROT, 1, 2, 3))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.CHICKEN, 5, 2, 5))
+				.build());
+		
+		TROPICAL_ISLAND_COAST = register("tropical_island_coast", TerrestriaBiome.builder()
+				.configuredSurfaceBuilder(TerrestriaSurfaces.TROPICAL_BEACH, TerrestriaSurfaces.TROPICAL_CONFIG)
+				.precipitation(Biome.Precipitation.RAIN).category(Biome.Category.BEACH)
+				.depth(0.025F)
+				.scale(0.025F)
+				.temperature(1.1F)
+				.downfall(0.7F)
+				.waterColor(4445678)
+				.waterFogColor(270131)
+				.setParent("blossom:tropical_reef") // I'm not risking changing this
+				.addDefaultFeatures(LAND_CARVERS, STRUCTURES, DUNGEONS, MINEABLES, ORES, DISKS,
+						DEFAULT_FLOWERS, DEFAULT_GRASS, DEFAULT_MUSHROOMS, SWAMP_VEGETATION,
+						SPRINGS, FROZEN_TOP_LAYER)
+				.addTreeFeature(TerrestriaFeatures.TROPICAL_ISLAND_PALM, 1)
+				.addTreeFeature(TerrestriaFeatures.TROPICAL_ISLAND_PALM_2, 1)
+				.addStructureFeature(Feature.STRONGHOLD)
+				.addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.BAT, 10, 8, 8))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.SPIDER, 100, 4, 4))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.SKELETON, 100, 4, 4))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.CREEPER, 100, 4, 4))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.SLIME, 100, 4, 4))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.ENDERMAN, 10, 1, 4))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.WITCH, 5, 1, 1))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.ZOMBIE, 95, 4, 4))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.ZOMBIE_VILLAGER, 1, 1, 1))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.TROPICAL_FISH, 26, 8, 8))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.RABBIT, 1, 2, 3))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.PARROT, 1, 2, 3))
+				.addSpawnEntry(new Biome.SpawnEntry(EntityType.CHICKEN, 5, 2, 5))
+				.build());
+		
 		TerrestriaFeatures.addVolcanoStarts(
 				VOLCANIC_ISLAND,
 				VOLCANIC_ISLAND_SHORE,
@@ -726,10 +844,12 @@ public class TerrestriaBiomes {
 		// 33% of Jungles will be replaced by Rainforest biomes
 		// 33% of Mountains will be replaced with Caldera Ridges
 		// 10% of Deep Oceans will be replaced with Volcanic Islands
+		// 30% of Deep Oceans will be replaced with Tropical Islands
 		OverworldBiomes.addBiomeVariant(Biomes.JUNGLE, RAINBOW_RAINFOREST, 0.33);
 		OverworldBiomes.addBiomeVariant(Biomes.MOUNTAINS, CALDERA_RIDGE, 0.33);
 		OverworldBiomes.addBiomeVariant(Biomes.DEEP_OCEAN, VOLCANIC_ISLAND_SHORE, 0.10);
-
+		OverworldBiomes.addBiomeVariant(Biomes.DEEP_OCEAN, TROPICAL_REEF, 0.3);
+		
 		OverworldBiomes.addContinentalBiome(CYPRESS_FOREST, OverworldClimate.TEMPERATE, 1.0);
 		OverworldBiomes.addContinentalBiome(SAKURA_FOREST, OverworldClimate.TEMPERATE, 1.0);
 		OverworldBiomes.addContinentalBiome(JAPANESE_MAPLE_FOREST, OverworldClimate.TEMPERATE, 1.0);
@@ -748,7 +868,9 @@ public class TerrestriaBiomes {
 
 		OverworldBiomesExt.addBorderBiome(CALDERA_RIDGE, ALPINE);
 		OverworldBiomesExt.addCenterBiome(CALDERA_RIDGE, CALDERA);
-
+		
+		OverworldBiomesExt.addBorderBiome(TROPICAL_REEF, TROPICAL_REEF_EDGE);
+		
 		OverworldBiomesExt.addBorderBiome(VOLCANIC_ISLAND_SHORE, VOLCANIC_ISLAND_SHORE);
 		OverworldBiomesExt.addCenterBiome(VOLCANIC_ISLAND_SHORE, VOLCANIC_ISLAND);
 
@@ -762,7 +884,8 @@ public class TerrestriaBiomes {
 		OverworldBiomes.addHillsBiome(RAINBOW_RAINFOREST, RAINBOW_RAINFOREST_MOUNTAINS, 1.0);
 		OverworldBiomes.addHillsBiome(RAINBOW_RAINFOREST, RAINBOW_RAINFOREST_LAKE, 0.6);
 		OverworldBiomes.addHillsBiome(ALPS, ALPINE, 1);
-
+		OverworldBiomes.addHillsBiome(TROPICAL_REEF, TROPICAL_ISLAND, 1);
+		
 		OverworldBiomes.setRiverBiome(ALPS, null);
 		OverworldBiomes.setRiverBiome(ALPINE, null);
 		OverworldBiomes.setRiverBiome(CALDERA, null);
@@ -771,10 +894,16 @@ public class TerrestriaBiomes {
 		OverworldBiomes.setRiverBiome(VOLCANIC_ISLAND, null);
 		OverworldBiomes.setRiverBiome(VOLCANIC_ISLAND_SHORE, null);
 		OverworldBiomes.setRiverBiome(VOLCANIC_ISLAND_BEACH, null);
-
+		OverworldBiomes.setRiverBiome(TROPICAL_ISLAND, null);
+		OverworldBiomes.setRiverBiome(TROPICAL_ISLAND_COAST, null);
+		OverworldBiomes.setRiverBiome(TROPICAL_REEF, null);
+		OverworldBiomes.setRiverBiome(TROPICAL_REEF_EDGE, null);
+		
 		OverworldBiomes.addShoreBiome(VOLCANIC_ISLAND, VOLCANIC_ISLAND_BEACH, 1);
 		OverworldBiomes.addShoreBiome(VOLCANIC_ISLAND_SHORE, VOLCANIC_ISLAND_BEACH, 1);
-
+		OverworldBiomes.addShoreBiome(TROPICAL_ISLAND, TROPICAL_ISLAND_COAST, 1);
+		OverworldBiomes.addShoreBiome(TROPICAL_REEF_EDGE, TROPICAL_REEF_EDGE, 1);
+		
 		FabricBiomes.addSpawnBiome(CYPRESS_FOREST);
 		FabricBiomes.addSpawnBiome(RAINBOW_RAINFOREST);
 		FabricBiomes.addSpawnBiome(REDWOOD_FOREST);

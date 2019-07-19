@@ -53,7 +53,9 @@ public class TerrestriaItems {
 	public static BlockItem BASALT_GRASS_BLOCK;
 	public static BlockItem INDIAN_PAINTBRUSH;
 	public static BlockItem MONSTERAS;
-
+	
+	public static BlockItem TROPICAL_SAND;
+	
 	public static void init() {
 		REDWOOD = WoodItems.register("redwood", TerrestriaBlocks.REDWOOD);
 		HEMLOCK = WoodItems.register("hemlock", TerrestriaBlocks.HEMLOCK);
@@ -99,6 +101,8 @@ public class TerrestriaItems {
 		BASALT_GRASS_BLOCK = register("basalt_grass_block", TerrestriaBlocks.BASALT_GRASS_BLOCK);
 		INDIAN_PAINTBRUSH = register("indian_paintbrush", TerrestriaBlocks.INDIAN_PAINTBRUSH);
 		MONSTERAS = register("monsteras", TerrestriaBlocks.MONSTERAS);
+		
+		TROPICAL_SAND = register("tropical_sand", TerrestriaBlocks.TROPICAL_SAND);
 	}
 
 	private static BlockItem register(String name, Block block) {
