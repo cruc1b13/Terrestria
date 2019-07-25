@@ -1,5 +1,10 @@
 {
   "variants": {
-	"": { "model": "terrestria:block/cracked_sand" }
+	"": [
+	  { "model": "terrestria:block/cracked_sand" },
+	  { "model": "terrestria:block/cracked_sand", "y": 90 },
+	  { "model": "terrestria:block/cracked_sand", "y": 180 },
+	  { "model": "terrestria:block/cracked_sand", "y": 270 }
+	]
   }
 }

@@ -37,6 +37,9 @@ public class TerrestriaBiomes {
 	public static Biome VOLCANIC_ISLAND;
 	public static Biome VOLCANIC_ISLAND_BEACH;
 	public static Biome VOLCANIC_ISLAND_SHORE;
+	public static Biome WASTELAND;
+	public static Biome WASTELAND_EDGE;
+	public static Biome WASTELAND_ISLAND;
 	public static Biome WOODED_CYPRESS_HILLS;
 	public static Biome WOODED_JAPANESE_MAPLE_HILLS;
 	public static Biome WOODED_SAKURA_HILLS;
@@ -55,6 +58,7 @@ public class TerrestriaBiomes {
 		SnowyHemlockRainforestBiomes.register();
 		JapaneseMapleForestBiomes.register();
 		VolcanicIslandBiomes.register();
+		WastelandBiomes.register();
 
 		TerrestriaFeatures.addVolcanoStarts(
 				VOLCANIC_ISLAND,

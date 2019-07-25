@@ -30,6 +30,7 @@ public class TerrestriaGeneration {
 		addContinentalBiome(SAKURA_FOREST, OverworldClimate.TEMPERATE, 1.0, "sakura_forest", config);
 		addContinentalBiome(SNOWY_HEMLOCK_FOREST, OverworldClimate.SNOWY, 2.0, "snowy_hemlock_forest", config);
 		addBiomeVariant(Biomes.DEEP_OCEAN, VOLCANIC_ISLAND_SHORE, 0.10, "volcanic_island", config);
+		addContinentalBiome(WASTELAND, OverworldClimate.DRY, 0.5, "wasteland", config);
 
 		if(CALDERA_RIDGE != null) {
 			OverworldBiomes.addEdgeBiome(CALDERA, CALDERA_BEACH, 1);
@@ -100,6 +101,17 @@ public class TerrestriaGeneration {
 			OverworldBiomes.setRiverBiome(VOLCANIC_ISLAND, null);
 			OverworldBiomes.setRiverBiome(VOLCANIC_ISLAND_BEACH, null);
 			OverworldBiomes.setRiverBiome(VOLCANIC_ISLAND_SHORE, null);
+		}
+
+		if(WASTELAND != null) {
+			OverworldBiomes.addHillsBiome(WASTELAND, WASTELAND_ISLAND, 1.0);
+
+			OverworldBiomes.addEdgeBiome(WASTELAND, WASTELAND_EDGE, 1.0);
+			OverworldBiomes.addShoreBiome(WASTELAND, WASTELAND_EDGE, 1.0);
+
+			OverworldBiomes.setRiverBiome(WASTELAND, null);
+			OverworldBiomes.setRiverBiome(WASTELAND_EDGE, null);
+			//OverworldBiomes.setRiverBiome(WASTELAND_HILLS, null);
 		}
 	}
 
