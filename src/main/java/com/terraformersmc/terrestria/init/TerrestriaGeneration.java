@@ -104,8 +104,6 @@ public class TerrestriaGeneration {
 		}
 
 		if(WASTELAND != null) {
-			OverworldBiomes.addHillsBiome(WASTELAND, WASTELAND_ISLAND, 1.0);
-
 			OverworldBiomes.addEdgeBiome(WASTELAND, WASTELAND_EDGE, 1.0);
 			OverworldBiomes.addShoreBiome(WASTELAND, WASTELAND_EDGE, 1.0);
 

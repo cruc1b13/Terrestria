@@ -56,12 +56,5 @@ public class WastelandBiomes {
 				.scale(0.1F)
 				.build()
 		);
-
-		TerrestriaBiomes.WASTELAND_ISLAND = TerrestriaBiomes.register("wasteland_island", template.builder()
-				.configureSurfaceBuilder(SurfaceBuilder.DEFAULT, TerrestriaSurfaces.CRACKED_SAND_CONFIG)
-				.depth(0.4F)
-				.scale(0.1F)
-				.build()
-		);
 	}
 }

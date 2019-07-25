@@ -39,7 +39,6 @@ public class TerrestriaBiomes {
 	public static Biome VOLCANIC_ISLAND_SHORE;
 	public static Biome WASTELAND;
 	public static Biome WASTELAND_EDGE;
-	public static Biome WASTELAND_ISLAND;
 	public static Biome WOODED_CYPRESS_HILLS;
 	public static Biome WOODED_JAPANESE_MAPLE_HILLS;
 	public static Biome WOODED_SAKURA_HILLS;
