@@ -44,6 +44,8 @@ public class TerrestriaItems {
 	public static BlockItem SAKURA_SAPLING;
 	public static BlockItem JUNGLE_PALM_SAPLING;
 
+	public static BlockItem CRACKED_SAND;
+
 	public static BlockItem BASALT;
 	public static BlockItem BASALT_SAND;
 	public static BlockItem BASALT_DIRT;
@@ -90,6 +92,8 @@ public class TerrestriaItems {
 		RAINBOW_EUCALYPTUS_SAPLING = TerrestriaRegistry.registerBlockItem("rainbow_eucalyptus_sapling", TerrestriaBlocks.RAINBOW_EUCALYPTUS_SAPLING);
 		SAKURA_SAPLING = TerrestriaRegistry.registerBlockItem("sakura_sapling", TerrestriaBlocks.SAKURA_SAPLING);
 		JUNGLE_PALM_SAPLING = TerrestriaRegistry.registerBlockItem("jungle_palm_sapling", TerrestriaBlocks.JUNGLE_PALM_SAPLING);
+
+		CRACKED_SAND = TerrestriaRegistry.registerBlockItem("cracked_sand", TerrestriaBlocks.CRACKED_SAND);
 
 		BASALT = TerrestriaRegistry.registerBlockItem("basalt", TerrestriaBlocks.BASALT);
 		BASALT_SAND = TerrestriaRegistry.registerBlockItem("basalt_sand", TerrestriaBlocks.BASALT_SAND);

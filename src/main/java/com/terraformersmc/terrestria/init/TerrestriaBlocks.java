@@ -67,6 +67,9 @@ public class TerrestriaBlocks {
 	public static FlowerPotBlock POTTED_RAINBOW_EUCALYPTUS_SAPLING;
 	public static FlowerPotBlock POTTED_SAKURA_SAPLING;
 
+	// Wasteland blocks
+	public static Block CRACKED_SAND;
+
 	// Volcanic Island blocks
 	public static SandBlock BASALT_SAND;
 	public static Block BASALT_DIRT;
@@ -177,6 +180,10 @@ public class TerrestriaBlocks {
 		JUNGLE_PALM_SAPLING = TerrestriaRegistry.register("jungle_palm_sapling", new TerraformSaplingBlock(
 				new TerraformSaplingGenerator(() -> TerrestriaFeatures.JUNGLE_PALM_TREE.sapling())
 		));
+
+		// Wasteland blocks
+
+		CRACKED_SAND = TerrestriaRegistry.register("cracked_sand", new Block(Block.Settings.copy(Blocks.SANDSTONE)));
 
 		// Volcanic Island Blocks
 
