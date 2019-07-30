@@ -1,5 +1,6 @@
 package com.terraformersmc.terrestria.init;
 
+import com.terraformersmc.terrestria.init.helpers.StoneItems;
 import com.terraformersmc.terrestria.init.helpers.TerrestriaRegistry;
 import com.terraformersmc.terrestria.init.helpers.WoodItems;
 import net.minecraft.item.BlockItem;
@@ -45,7 +46,7 @@ public class TerrestriaItems {
 	public static BlockItem JUNGLE_PALM_SAPLING;
 
 	public static BlockItem CRACKED_SAND;
-
+	public static StoneItems BASALT;
 	public static BlockItem BASALT;
 	public static BlockItem BASALT_SAND;
 	public static BlockItem BASALT_DIRT;
@@ -94,7 +95,7 @@ public class TerrestriaItems {
 		JUNGLE_PALM_SAPLING = TerrestriaRegistry.registerBlockItem("jungle_palm_sapling", TerrestriaBlocks.JUNGLE_PALM_SAPLING);
 
 		CRACKED_SAND = TerrestriaRegistry.registerBlockItem("cracked_sand", TerrestriaBlocks.CRACKED_SAND);
-
+		BASALT = StoneItems.register("basalt", TerrestriaBlocks.BASALT);
 		BASALT = TerrestriaRegistry.registerBlockItem("basalt", TerrestriaBlocks.BASALT);
 		BASALT_SAND = TerrestriaRegistry.registerBlockItem("basalt_sand", TerrestriaBlocks.BASALT_SAND);
 		BASALT_DIRT = TerrestriaRegistry.registerBlockItem("basalt_dirt", TerrestriaBlocks.BASALT_DIRT);
