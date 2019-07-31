@@ -47,7 +47,6 @@ public class TerrestriaItems {
 
 	public static BlockItem CRACKED_SAND;
 	public static StoneItems BASALT;
-	public static BlockItem BASALT;
 	public static BlockItem BASALT_SAND;
 	public static BlockItem BASALT_DIRT;
 	public static BlockItem BASALT_GRASS_BLOCK;
@@ -96,7 +95,6 @@ public class TerrestriaItems {
 
 		CRACKED_SAND = TerrestriaRegistry.registerBlockItem("cracked_sand", TerrestriaBlocks.CRACKED_SAND);
 		BASALT = StoneItems.register("basalt", TerrestriaBlocks.BASALT);
-		BASALT = TerrestriaRegistry.registerBlockItem("basalt", TerrestriaBlocks.BASALT);
 		BASALT_SAND = TerrestriaRegistry.registerBlockItem("basalt_sand", TerrestriaBlocks.BASALT_SAND);
 		BASALT_DIRT = TerrestriaRegistry.registerBlockItem("basalt_dirt", TerrestriaBlocks.BASALT_DIRT);
 		BASALT_GRASS_BLOCK = TerrestriaRegistry.registerBlockItem("basalt_grass_block", TerrestriaBlocks.BASALT_GRASS_BLOCK);
