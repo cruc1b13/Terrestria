@@ -7,7 +7,8 @@
     "MixinAnimalEntity",
     "MixinBlock",
     "MixinFluidBlock",
-    "MixinPlantBlock"
+    "MixinPlantBlock",
+    "MixinSpreadableBlock"
   ],
   "injectors": {
     "defaultRequire": 1
