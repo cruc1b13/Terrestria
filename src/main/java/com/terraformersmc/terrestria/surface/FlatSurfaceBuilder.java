@@ -17,10 +17,8 @@ import java.util.Random;
 import java.util.function.Function;
 
 public class FlatSurfaceBuilder extends DefaultSurfaceBuilder {
-	private int targetHeight = 63;
-	private long lastSeed = 0;
-	private OpenSimplexNoise noise = new OpenSimplexNoise(0);
-	private OpenSimplexNoise noise2 = new OpenSimplexNoise(1);
+	private static final OpenSimplexNoise NOISE = new OpenSimplexNoise(0);
+	int targetHeight = 63;
 
 	public FlatSurfaceBuilder(Function<Dynamic<?>, ? extends TernarySurfaceConfig> deserializer) {
 		super(deserializer);
@@ -31,9 +29,25 @@ public class FlatSurfaceBuilder extends DefaultSurfaceBuilder {
 
 		BlockPos.Mutable pos = new BlockPos.Mutable(x, height, z);
 
+		//Make everything at sea Level and below solid
 		do {
 			chunk.setBlockState(new BlockPos.Mutable(x, height, z), config.getTopMaterial(), true);
 			pos.setOffset(Direction.DOWN);
 		} while (chunk.getBlockState(pos).getBlock().equals(Blocks.WATER));
+
+		pos = new BlockPos.Mutable(x, targetHeight, z);
+
+		//Add occasional islands
+		double islandNoise = NOISE.sample(x * 0.1, z * 0.1);
+		double islandHeight = islandNoise * 80 + targetHeight - 1;
+
+		if (height < targetHeight -2) {
+			for (int i = targetHeight; i < islandHeight; i++) {
+				chunk.setBlockState(pos, config.getTopMaterial(), true);
+				pos.setOffset(Direction.UP);
+			}
+		} else {
+			super.generate(rand, chunk, biome, x, z, height, noiseVal, var9, var10, var11, seed, config);
+		}
 	}
 }

@@ -34,7 +34,7 @@ public class WastelandBiomes {
 
 		TerrestriaBiomes.WASTELAND_EDGE = TerrestriaBiomes.register("wasteland_edge", template.builder()
 				.configureSurfaceBuilder(TerrestriaSurfaces.FLAT, TerrestriaSurfaces.CRACKED_SAND_CONFIG)
-				.depth(0.6F)
+				.depth(0.3F)
 				.scale(0.1F)
 				.build()
 		);
