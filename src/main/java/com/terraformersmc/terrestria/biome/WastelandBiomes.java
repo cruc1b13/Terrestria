@@ -19,7 +19,7 @@ public class WastelandBiomes {
 				.waterColor(0xF08000)
 				.waterFogColor(0x301800)
 				.addDefaultFeatures(LAND_CARVERS, STRUCTURES, DUNGEONS, PLAINS_TALL_GRASS, MINEABLES, ORES, DISKS,
-						DEFAULT_MUSHROOMS, DEFAULT_VEGETATION, SPRINGS, FROZEN_TOP_LAYER, LAKES)
+						DEFAULT_MUSHROOMS, DEFAULT_VEGETATION, SPRINGS, FROZEN_TOP_LAYER)
 				.addStructureFeature(Feature.STRONGHOLD)
 				.addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL))
 				.addDefaultSpawnEntries()
