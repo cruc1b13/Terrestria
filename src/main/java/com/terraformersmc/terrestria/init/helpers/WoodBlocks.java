@@ -5,6 +5,7 @@ import com.terraformersmc.terraform.block.*;
 import com.terraformersmc.terrestria.Terrestria;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.*;
 import net.minecraft.util.Identifier;
 
@@ -58,11 +59,13 @@ public class WoodBlocks {
 		if (size.equals(LogSize.SMALL)) {
 			WoodBlocks blocks = registerManufactured(name, colors, registry);
 
-			blocks.log = TerrestriaRegistry.register(name + "_log", new SmallLogBlock(blocks.leaves, () -> blocks.strippedLog, FabricBlockSettings.copy(Blocks.OAK_LOG).materialColor(colors.bark).build()));
-			blocks.wood = blocks.log; //no need for a wood type
 			blocks.leaves = TerrestriaRegistry.register(name + "_leaves", new TransparentLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).materialColor(colors.leaves).build()));
-			blocks.strippedLog = TerrestriaRegistry.register("stripped_" + name + "_log", new SmallLogBlock(blocks.leaves, null, FabricBlockSettings.copy(Blocks.OAK_LOG).materialColor(colors.planks).build()));
-			blocks.strippedWood = blocks.strippedLog; //no need for a stripped wood type
+
+			blocks.log = TerrestriaRegistry.register(name + "_log", new SmallLogBlock(blocks.leaves, () -> blocks.strippedLog, FabricBlockSettings.copy(Blocks.OAK_LOG).materialColor(colors.bark).nonOpaque().build()));
+			blocks.wood = blocks.log; // no need for a wood type
+
+			blocks.strippedLog = TerrestriaRegistry.register("stripped_" + name + "_log", new SmallLogBlock(blocks.leaves, null, FabricBlockSettings.copy(Blocks.OAK_LOG).materialColor(colors.planks).nonOpaque().build()));
+			blocks.strippedWood = blocks.strippedLog; // wno need for a stripped wood type
 
 			blocks.addTreeFireInfo(registry);
 
@@ -82,17 +85,20 @@ public class WoodBlocks {
 		blocks.stairs = TerrestriaRegistry.register(name + "_stairs", new TerraformStairsBlock(blocks.planks, FabricBlockSettings.copy(Blocks.OAK_STAIRS).materialColor(colors.planks).build()));
 		blocks.fence = TerrestriaRegistry.register(name + "_fence", new FenceBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE).materialColor(colors.planks).build()));
 		blocks.fenceGate = TerrestriaRegistry.register(name + "_fence_gate", new FenceGateBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE_GATE).materialColor(colors.planks).build()));
-		blocks.door = TerrestriaRegistry.register(name + "_door", new TerraformDoorBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE_GATE).materialColor(colors.planks).build()));
+		blocks.door = TerrestriaRegistry.register(name + "_door", new TerraformDoorBlock(FabricBlockSettings.copy(Blocks.OAK_DOOR).materialColor(colors.planks).build()));
 		blocks.button = TerrestriaRegistry.register(name + "_button", new TerraformButtonBlock(FabricBlockSettings.copy(Blocks.OAK_BUTTON).materialColor(colors.planks).build()));
 		blocks.pressurePlate = TerrestriaRegistry.register(name + "_pressure_plate", new TerraformPressurePlateBlock(FabricBlockSettings.copy(Blocks.OAK_PRESSURE_PLATE).materialColor(colors.planks).build()));
 		blocks.trapdoor = TerrestriaRegistry.register(name + "_trapdoor", new TerraformTrapdoorBlock(FabricBlockSettings.copy(Blocks.OAK_TRAPDOOR).materialColor(colors.planks).build()));
 
-		Identifier signTexture = new Identifier(Terrestria.MOD_ID, "textures/entity/signs/" + name + ".png");
+		Identifier signTexture = new Identifier(Terrestria.MOD_ID, "entity/signs/" + name);
 
 		blocks.sign = TerrestriaRegistry.register(name + "_sign", new TerraformSignBlock(signTexture, FabricBlockSettings.copy(Blocks.OAK_SIGN).materialColor(colors.planks).build()));
-		blocks.wallSign = TerrestriaRegistry.register(name + "_wall_sign", new TerraformWallSignBlock(signTexture, FabricBlockSettings.copy(Blocks.OAK_SIGN).materialColor(colors.planks).build()));
+		blocks.wallSign = TerrestriaRegistry.register(name + "_wall_sign", new TerraformWallSignBlock(signTexture, FabricBlockSettings.copy(Blocks.OAK_WALL_SIGN).materialColor(colors.planks).build()));
 
 		blocks.addManufacturedFireInfo(registry);
+
+		FuelRegistry.INSTANCE.add(blocks.fence, 300);
+		FuelRegistry.INSTANCE.add(blocks.fenceGate, 300);
 
 		return blocks;
 	}
@@ -136,8 +142,8 @@ public class WoodBlocks {
 		registry.add(fenceGate, 5, 20);
 	}
 
-	public TreeDefinition.Basic getBasicDefinition() {
-		return new TreeDefinition.Basic(this.log.getDefaultState(), this.leaves.getDefaultState());
+	public TreeDefinition.Mega getMegaDefinition(Block quarterLog) {
+		return new TreeDefinition.Mega(this.log.getDefaultState(), this.leaves.getDefaultState(), quarterLog.getDefaultState(), this.wood.getDefaultState());
 	}
 
 	public enum LogSize {

@@ -3,6 +3,7 @@ package com.terraformersmc.terrestria.biome;
 import com.terraformersmc.terraform.biome.builder.DefaultFeature;
 import com.terraformersmc.terraform.biome.builder.TerraformBiome;
 import com.terraformersmc.terrestria.init.TerrestriaBiomes;
+import com.terraformersmc.terrestria.init.TerrestriaFeatureConfigs;
 import com.terraformersmc.terrestria.init.TerrestriaFeatures;
 import com.terraformersmc.terrestria.init.TerrestriaSurfaces;
 import net.minecraft.entity.EntityType;
@@ -49,7 +50,7 @@ public class CalderaBiomes {
 				.downfall(0.7F)
 				.build());
 
-		TerrestriaBiomes.CALDERA_FOOTHILLS = TerrestriaBiomes.register("caldera_foothills", TerraformBiome.builder()
+		TerrestriaBiomes.CALDERA_FOOTHILLS = TerrestriaBiomes.register("caldera_foothills", template.builder()
 				.configureSurfaceBuilder(SurfaceBuilder.MOUNTAIN, SurfaceBuilder.GRASS_CONFIG)
 				.precipitation(Biome.Precipitation.SNOW).category(Biome.Category.EXTREME_HILLS)
 				.depth(1.7F)
@@ -58,14 +59,14 @@ public class CalderaBiomes {
 				.downfall(0.1F)
 				.waterColor(4159204)
 				.waterFogColor(329011)
-				.addRareTreeFeature(TerrestriaFeatures.REDWOOD_TREE, 2)
-				.addRareTreeFeature(TerrestriaFeatures.HEMLOCK_TREE, 2)
-				.addTreeFeature(TerrestriaFeatures.TINY_REDWOOD_TREE, 1)
-				.addTreeFeature(TerrestriaFeatures.TINY_HEMLOCK_TREE, 1)
+				.addRareTreeFeature(TerrestriaFeatures.REDWOOD_TREE.configure(TerrestriaFeatureConfigs.REDWOOD), 2)
+				.addRareTreeFeature(TerrestriaFeatures.HEMLOCK_TREE.configure(TerrestriaFeatureConfigs.HEMLOCK), 2)
+				.addTreeFeature(Feature.NORMAL_TREE.configure(TerrestriaFeatureConfigs.TINY_REDWOOD), 1)
+				.addTreeFeature(Feature.NORMAL_TREE.configure(TerrestriaFeatureConfigs.TINY_HEMLOCK), 1)
 				.addSpawnEntry(new Biome.SpawnEntry(EntityType.WOLF, 5, 4, 4))
 				.build());
 
-		TerrestriaBiomes.CALDERA_RIDGE = TerrestriaBiomes.register("caldera_ridge", TerraformBiome.builder()
+		TerrestriaBiomes.CALDERA_RIDGE = TerrestriaBiomes.register("caldera_ridge", template.builder()
 				.configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG)
 				.precipitation(Biome.Precipitation.RAIN).category(Biome.Category.EXTREME_HILLS)
 				.depth(4F)
@@ -74,8 +75,8 @@ public class CalderaBiomes {
 				.downfall(1F)
 				.waterColor(4159204)
 				.waterFogColor(329011)
-				.addTreeFeature(TerrestriaFeatures.TINY_REDWOOD_TREE, 1)
-				.addTreeFeature(TerrestriaFeatures.TINY_HEMLOCK_TREE, 1)
+				.addTreeFeature(Feature.NORMAL_TREE.configure(TerrestriaFeatureConfigs.TINY_REDWOOD), 1)
+				.addTreeFeature(Feature.NORMAL_TREE.configure(TerrestriaFeatureConfigs.TINY_HEMLOCK), 1)
 				.build());
 	}
 }
